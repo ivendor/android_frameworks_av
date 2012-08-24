@@ -176,6 +176,9 @@ CameraSource::CameraSource(
       mFirstFrameTimeUs(0),
       mNumFramesDropped(0),
       mNumGlitches(0),
+#ifdef SAMSUNG_CAMERA_QCOM
+      mIsFrontCamera(false),
+#endif
       mGlitchDurationThresholdUs(200000),
       mCollectStats(false) {
     mVideoSize.width  = -1;
@@ -511,6 +514,9 @@ status_t CameraSource::initWithCameraAccess(
         return err;
     }
 
+#ifdef SAMSUNG_CAMERA_QCOM
+    mIsFrontCamera = strcmp(params.get(CameraParameters::KEY_ZOOM_SUPPORTED),CameraParameters::TRUE); // Hack to detect Front Camera
+#endif
     // Set the camera to use the requested video frame size
     // and/or frame rate.
     if ((err = configureCamera(&params,
@@ -854,4 +860,9 @@ void CameraSource::DeathNotifier::binderDied(const wp<IBinder>& who) {
     ALOGI("Camera recording proxy died");
 }
 
+#ifdef SAMSUNG_CAMERA_QCOM
+bool CameraSource::isFrontCamera() const {
+    return mIsFrontCamera;
+}
+#endif
 }  // namespace android
