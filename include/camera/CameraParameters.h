@@ -957,6 +957,25 @@ public:
 #ifdef QCOM_SONY_HARDWARE
     void getFocusAreaCenter(int *x, int *y) const;
 #endif
+
+#ifdef SAMSUNG_CAMERA_QCOM
+    static const char FOCUS_MODE_TOUCHAF[];
+    static const char FOCUS_MODE_FACEDETECT[];
+    static const char KEY_AUTO_CONTRAST[];
+    static const char KEY_WDR_MODE[];
+    static const char KEY_BLUR_MODE[];
+    static const char KEY_BEAUTY_MODE[];
+    static const char KEY_ANTI_SHAKE_MODE[];
+    static const char KEY_VINTAGE_MODE[];
+    static const char VINTAGE_MODE_OFF[];
+    static const char VINTAGE_MODE_NORMAL[];
+    static const char VINTAGE_MODE_WARM[];
+    static const char VINTAGE_MODE_COOL[];
+    static const char VINTAGE_MODE_BNW[];
+    static const char SCENE_MODE_DAWN[];
+    static const char SCENE_MODE_FALL_COLOR[];
+    static const char SCENE_MODE_TEXT[];
+    static const char ISO_50[];
 #endif
 
 private:

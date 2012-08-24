@@ -130,7 +130,11 @@ const char CameraParameters::KEY_ISO_MODE[] = "iso";
 #ifdef QCOM_HARDWARE
 const char CameraParameters::KEY_LENSSHADE[] = "lensshade";
 const char CameraParameters::KEY_SUPPORTED_LENSSHADE_MODES[] = "lensshade-values";
+#ifdef SAMSUNG_CAMERA_QCOM
+const char CameraParameters::KEY_AUTO_EXPOSURE[] = "metering";
+#else
 const char CameraParameters::KEY_AUTO_EXPOSURE[] = "auto-exposure";
+#endif
 const char CameraParameters::KEY_SUPPORTED_AUTO_EXPOSURE[] = "auto-exposure-values";
 const char CameraParameters::KEY_DENOISE[] = "denoise";
 const char CameraParameters::KEY_SUPPORTED_DENOISE[] = "denoise-values";
@@ -310,9 +314,15 @@ const char CameraParameters::LENSSHADE_ENABLE[] = "enable";
 const char CameraParameters::LENSSHADE_DISABLE[] = "disable";
 
 // Values for auto exposure settings.
+#ifdef SAMSUNG_CAMERA_QCOM
+const char CameraParameters::AUTO_EXPOSURE_FRAME_AVG[] = "matrix";
+const char CameraParameters::AUTO_EXPOSURE_CENTER_WEIGHTED[] = "center";
+const char CameraParameters::AUTO_EXPOSURE_SPOT_METERING[] = "spot";
+#else
 const char CameraParameters::AUTO_EXPOSURE_FRAME_AVG[] = "frame-average";
 const char CameraParameters::AUTO_EXPOSURE_CENTER_WEIGHTED[] = "center-weighted";
 const char CameraParameters::AUTO_EXPOSURE_SPOT_METERING[] = "spot-metering";
+#endif
 
 #ifdef QCOM_SONY_HARDWARE
 const char CameraParameters::KEY_SEMC_METRY_MODE[] = "semc-metering-mode";
@@ -337,21 +347,21 @@ const char CameraParameters::SKIN_TONE_ENHANCEMENT_ENABLE[] = "enable";
 const char CameraParameters::SKIN_TONE_ENHANCEMENT_DISABLE[] = "disable";
 
 const char CameraParameters::KEY_SHARPNESS[] = "sharpness";
-#ifdef QCOM_HARDWARE
+#if defined QCOM_HARDWARE && !defined SAMSUNG_CAMERA_QCOM
 const char CameraParameters::KEY_MAX_SHARPNESS[] = "sharpness-max";
 const char CameraParameters::KEY_MIN_SHARPNESS[] = "sharpness-min";
 #else
 const char CameraParameters::KEY_MAX_SHARPNESS[] = "max-sharpness";
 #endif
 const char CameraParameters::KEY_CONTRAST[] = "contrast";
-#ifdef QCOM_HARDWARE
+#if defined QCOM_HARDWARE && !defined SAMSUNG_CAMERA_QCOM
 const char CameraParameters::KEY_MAX_CONTRAST[] = "contrast-max";
 const char CameraParameters::KEY_MIN_CONTRAST[] = "contrast-min";
 #else
 const char CameraParameters::KEY_MAX_CONTRAST[] = "max-contrast";
 #endif
 const char CameraParameters::KEY_SATURATION[] = "saturation";
-#ifdef QCOM_HARDWARE
+#if defined QCOM_HARDWARE && !defined SAMSUNG_CAMERA_QCOM
 const char CameraParameters::KEY_MAX_SATURATION[] = "saturation-max";
 const char CameraParameters::KEY_MIN_SATURATION[] = "saturation-min";
 #else
@@ -395,6 +405,25 @@ const char CameraParameters::ZSL_ON[] = "on";
 const char CameraParameters::AE_BRACKET_HDR_OFF[] = "Off";
 const char CameraParameters::AE_BRACKET_HDR[] = "HDR";
 const char CameraParameters::AE_BRACKET[] = "AE-Bracket";
+#ifdef SAMSUNG_CAMERA_QCOM
+const char CameraParameters::FOCUS_MODE_TOUCHAF[] = "touchaf";
+const char CameraParameters::FOCUS_MODE_FACEDETECT[] = "facedetect";
+const char CameraParameters::KEY_AUTO_CONTRAST[] = "auto-contrast";
+const char CameraParameters::KEY_WDR_MODE[] = "wdr";
+const char CameraParameters::KEY_BLUR_MODE[] = "blur";
+const char CameraParameters::KEY_BEAUTY_MODE[] = "beauty";
+const char CameraParameters::KEY_ANTI_SHAKE_MODE[] = "antishake";
+const char CameraParameters::KEY_VINTAGE_MODE[] = "vintagemode";
+const char CameraParameters::VINTAGE_MODE_OFF[] = "off";
+const char CameraParameters::VINTAGE_MODE_NORMAL[] = "normal";
+const char CameraParameters::VINTAGE_MODE_WARM[] = "warm";
+const char CameraParameters::VINTAGE_MODE_COOL[] = "cool";
+const char CameraParameters::VINTAGE_MODE_BNW[] = "bnw";
+const char CameraParameters::SCENE_MODE_DAWN[] = "dusk-dawn";
+const char CameraParameters::SCENE_MODE_FALL_COLOR[] = "fall-color";
+const char CameraParameters::SCENE_MODE_TEXT[] = "text";
+const char CameraParameters::ISO_50[] = "ISO50";
+#endif
 
 #if defined(CAMERA_POWERMODE) || defined(QCOM_SONY_HARDWARE)
 const char CameraParameters::LOW_POWER[] = "Low_Power";
