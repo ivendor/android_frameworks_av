@@ -1409,14 +1409,11 @@ void CameraService::Client::copyFrameAndPostCopiedFrame(
 }
 
 int CameraService::Client::getOrientation(int degrees, bool mirror) {
-#ifndef SAMSUNG_CAMERA_QCOM
     if (!mirror) {
-#endif
         if (degrees == 0) return 0;
         else if (degrees == 90) return HAL_TRANSFORM_ROT_90;
         else if (degrees == 180) return HAL_TRANSFORM_ROT_180;
         else if (degrees == 270) return HAL_TRANSFORM_ROT_270;
-#ifndef SAMSUNG_CAMERA_QCOM
     } else {  // Do mirror (horizontal flip)
         if (degrees == 0) {           // FLIP_H and ROT_0
             return HAL_TRANSFORM_FLIP_H;
@@ -1428,7 +1425,6 @@ int CameraService::Client::getOrientation(int degrees, bool mirror) {
             return HAL_TRANSFORM_FLIP_H | HAL_TRANSFORM_ROT_90;
         }
     }
-#endif
     ALOGE("Invalid setDisplayOrientation degrees=%d", degrees);
     return -1;
 }
