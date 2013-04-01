@@ -13,6 +13,11 @@ ifeq ($(TARGET_BOARD_PLATFORM), exynos4)
 LOCAL_CFLAGS += -DMALI_ALIGNMENT
 endif
 
+ifeq ($(BOARD_USES_QCOM_HARDWARE), true)
+    LOCAL_CFLAGS += -DQCOM_HARDWARE
+endif
+
+
 LOCAL_MODULE:= libstagefright_color_conversion
 
 include $(BUILD_STATIC_LIBRARY)

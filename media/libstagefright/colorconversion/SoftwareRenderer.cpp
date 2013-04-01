@@ -109,11 +109,17 @@ SoftwareRenderer::SoftwareRenderer(
             | GRALLOC_USAGE_HW_TEXTURE | GRALLOC_USAGE_EXTERNAL_DISP));
 #endif
 
+
     CHECK_EQ(0,
              mNativeWindow.get()->perform(
              mNativeWindow.get(),
              NATIVE_WINDOW_SET_BUFFERS_SIZE,
-             0));
+#ifdef QCOM_HARDWARE
+			 3
+#else
+			 0
+#endif
+             ));
 
     CHECK_EQ(0,
             native_window_set_scaling_mode(
